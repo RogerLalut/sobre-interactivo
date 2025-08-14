@@ -3,123 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sobre con Carta</title>
+<title>Sobre interactivo</title>
 <style>
-    body {
-        background: linear-gradient(135deg, #fceabb, #f8b500);
-        font-family: 'Segoe UI', sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-    }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #ffd36b, #ffaf42);
+    font-family: Arial, sans-serif;
+  }
 
-    .container {
-        text-align: center;
-    }
+  .sobre {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    /* Sobre */
-    .envelope {
-        position: relative;
-        width: 280px;
-        height: 200px;
-        background: #ff4d6d;
-        border-radius: 5px;
-        margin: auto;
-        overflow: hidden;
-        transition: transform 0.5s ease;
-    }
+  .carta {
+    position: absolute;
+    bottom: 50px;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    line-height: 1.5;
+    width: 300px;
+    max-width: 90%;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
 
-    .flap {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 50%;
-        background: #ff1e50;
-        clip-path: polygon(0 0, 50% 100%, 100% 0);
-        transform-origin: top;
-        transition: transform 0.6s ease;
-    }
+  .carta.abierta {
+    transform: translateY(0);
+    opacity: 1;
+  }
 
-    .letter {
-        position: absolute;
-        bottom: -100%;
-        left: 0;
-        width: 100%;
-        height: auto;
-        background: white;
-        padding: 20px;
-        box-sizing: border-box;
-        font-size: 1rem;
-        line-height: 1.4;
-        color: #333;
-        border-radius: 4px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        transition: bottom 0.6s ease;
-    }
+  .corazon {
+    font-size: 2.5rem;
+    transition: transform 0.3s;
+  }
 
-    /* Botón corazón */
-    .heart-btn {
-        margin-top: 15px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 2rem;
-        transition: transform 0.2s ease;
-    }
+  .corazon:hover {
+    transform: scale(1.2);
+  }
 
-    .heart-btn:hover {
-        transform: scale(1.2);
+  /* Ajuste para pantallas pequeñas */
+  @media (max-width: 480px) {
+    .carta {
+      width: 90%;
+      font-size: 1.1rem;
+      padding: 15px;
     }
-
-    /* Estado abierto */
-    .open .flap {
-        transform: rotateX(180deg);
+    .corazon {
+      font-size: 3rem;
     }
-
-    .open .letter {
-        bottom: 0;
-    }
-
-    /* Responsive */
-    @media (max-width: 500px) {
-        .envelope {
-            width: 90%;
-            height: 180px;
-        }
-        .letter {
-            font-size: 0.9rem;
-        }
-    }
+  }
 </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="envelope" id="envelope">
-        <div class="flap"></div>
-        <div class="letter">
-            <p>
-                Mi amor.<br><br>
-                Hoy decidí escribir esta carta, expresando todo el amor que siempre he sentido por ti. Sé que lo que se nos viene serán los mejores años de nuestras vidas junto con nuestros hijos más el que tenemos pensado en futuro. ❤️<br><br>
-                Te amo sin importar nada ni el que dirán. Tú eres mi lugar seguro en el mundo 🌎.<br><br>
-                De tu futuro esposo,<br>
-                <strong>Roger</strong>.
-            </p>
-        </div>
-    </div>
-    <button class="heart-btn" id="toggleBtn">❤️</button>
+<div class="sobre" onclick="abrirCarta()">
+  <div class="carta" id="carta">
+    Mi amor.<br><br>
+    Hoy decidí escribir esta carta, expresando todo el amor que siempre he sentido por ti. Sé que lo que se nos viene serán los mejores años de nuestras vidas junto con nuestros hijos más el que tenemos pensado en el futuro. ❤️ Te amo sin importar nada.
+  </div>
+  <div class="corazon">❤️</div>
 </div>
 
 <script>
-    const envelope = document.getElementById('envelope');
-    const toggleBtn = document.getElementById('toggleBtn');
-
-    toggleBtn.addEventListener('click', () => {
-        envelope.classList.toggle('open');
-    });
+function abrirCarta() {
+  document.getElementById('carta').classList.toggle('abierta');
+}
 </script>
 
 </body>
