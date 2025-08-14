@@ -6,13 +6,13 @@
 <title>Sobre interactivo</title>
 <style>
   body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: linear-gradient(135deg, #ffd36b, #ffaf42);
-    font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0c36d; /* tu fondo naranja */
+  
+    
   }
 
   .sobre {
@@ -23,20 +23,17 @@
     align-items: center;
   }
 
+  
   .carta {
-    position: absolute;
-    bottom: 50px;
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: left;
-    line-height: 1.5;
-    width: 300px;
-    max-width: 90%;
-    transform: translateY(100%);
-    opacity: 0;
-    transition: transform 0.8s ease, opacity 0.8s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  width: 90%;           /* ocupa casi todo el ancho del móvil */
+  max-width: 400px;     /* límite para pantallas grandes */
+  margin: 0 auto;       /* centra horizontalmente */
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  word-wrap: break-word; /* evita que las palabras largas se salgan */
+    }
   }
 
   .carta.abierta {
